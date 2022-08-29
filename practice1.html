@@ -8,28 +8,10 @@
   </head>
   <body>
     <h1>API Practice 1</h1>
-    <button onclick="showComments()">Click to show comments</button>
-    <h3>Comments:</h3>
-    <div id="comments"></div>
     <script>
-      const showComments = () => {
-        fetch("https://jsonplaceholder.typicode.com/comments")
-          .then((response) => response.json())
-          .then((data) => displayComments(data));
-      };
-
-      const displayComments = (data) => {
-        const comments = document.getElementById("comments");
-        data.forEach((comment) => {
-          console.log(comment);
-          const commentDiv = document.createElement("div");
-          commentDiv.innerHTML = `
-            <h4>${comment.name}</h4>
-            <p>${comment.body}</p>
-          `;
-          comments.appendChild(commentDiv);
-        });
-      };
+      fetch("https://jsonplaceholder.typicode.com/comments")
+        .then((response) => response.json())
+        .then((data) => console.log(data));
     </script>
   </body>
 </html>
