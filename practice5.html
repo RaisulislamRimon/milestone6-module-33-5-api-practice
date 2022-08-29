@@ -45,8 +45,15 @@
       };
 
       const commentDetailsBtn = (commentId) => {
+        const postApi = `https://jsonplaceholder.typicode.com/posts`;
+        fetch(postApi)
+          .then((response) => response.json())
+          .then((data) => commentDiv(data));
+
         console.log("Comment details", commentId);
+
         const commentShow = document.getElementById("comment-show");
+        commentShow.innerHTML = "";
         const commentDetails = document.createElement("div");
         commentDetails.classList.add("comment");
         commentDetails.innerHTML = `
@@ -54,6 +61,12 @@
           <p>Comment id: ${commentId}</p>
         `;
         commentShow.appendChild(commentDetails);
+      };
+
+      const commentDiv = (data) => {
+        data.forEach((element) => {
+          console.log(element.id);
+        });
       };
 
       showComments();
